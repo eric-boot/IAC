@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://futureweather/windspeed/response"
+           targetNamespace="http://futureweather/windspeed/response">
+
+    <xs:annotation>
+        <xs:appinfo>Repsonse uitleg</xs:appinfo>
+        <xs:documentation xml:lang="nl">
+            In deze repsone wordt als eerste het windspeedresponse-element gedefenieerd.
+
+            Deze is van het type 'tns:response'. Dit type staat onder het repsonse-element en
+            is een complextype, omdat het twee elementen bevat die maar 1 keer mogen voorkomen.
+
+            Het eerste element moet een positief getal zijn. Het tweede element 'unit' moet 'm/s' of 'km/h' bevatten.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="windspeedresponse" type="tns:response"/>
+
+    <xs:complexType name="response">
+        <xs:all minOccurs="1" maxOccurs="1">
+            <xs:element name="windspeed" type="xs:positiveInteger" />
+            <xs:element name="unit" type="tns:unit" />
+	    </xs:all>
+    </xs:complexType>
+    
+    <xs:simpleType name="unit">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="m/s" />
+            <xs:enumeration value="km/h" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

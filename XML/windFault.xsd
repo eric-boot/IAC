@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://futureweather/windspeed/fault"
+           targetNamespace="http://futureweather/windspeed/fault">
+
+    <xs:annotation>
+        <xs:appinfo>Fault uitleg</xs:appinfo>
+        <xs:documentation xml:lang="nl">
+            In deze fault wordt als eerste het faulthandling-element gedefenieerd.
+
+            Deze is van het type 'tns:fault'. Dit type staat onder het fault-element en
+            is een complextype, omdat het een element bevat die maar 1 keer mag voorkomen.
+
+            Dit element is van het type string.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="faulthandling" type="tns:fault"/>
+
+    <xs:complexType name="fault">
+        <xs:all minOccurs="1" maxOccurs="1">
+            <xs:element name="fault" type="xs:string" />
+        </xs:all>
+    </xs:complexType>
+
+</xs:schema>

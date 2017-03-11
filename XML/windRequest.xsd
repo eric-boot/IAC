@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://futureweather/windspeed/request"
+           targetNamespace="http://futureweather/windspeed/request">
+
+    <xs:annotation>
+        <xs:appinfo>Request uitleg</xs:appinfo>
+        <xs:documentation xml:lang="nl">
+            In dit request wordt als eerste het windspeedrequest-element gedefenieerd.
+
+            Deze is van het type 'tns:request'. Dit type staat onder het request-element en
+            is een complextype, omdat het elementen bevat die maar 1 keer mogen voorkomen in elke volgorde.
+
+            De twee elementen in complextype 'request' hebben de typen 'tns:dateTime' en 'tns:location'. Na dit type
+            volgen de typen van de element in het type van request.
+
+            Complextype 'dateTime' bevat de elementen datum en tijd. Datum en tijd zijn respectievelijk van het
+            type date en time. De date moet in het format yyyy-mm-dd en de tijd moet in het format hh:mm:ss worden ingevoerd.
+
+            Complextype 'location' bevat de elementen latitude en longitude beide respectievelijk het
+            type 'tns:latitude' en 'tns:longitude'.
+
+            Simpletype latitude bevat een restrictie welke vertelt dat de latitude tussen de -90 en 90 moet liggen.
+
+            Simpletype longitude bevat een restrictie welke vertelt dat de longitude tussen de -180 en 180 moet liggen.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="windspeedrequest" type="tns:request" />
+
+    <xs:complexType name="request">
+        <xs:all minOccurs="1" maxOccurs="1">
+            <xs:element name="dateTime" type="tns:dateTime"/>
+            <xs:element name="location" type="tns:location"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="dateTime">
+        <xs:all minOccurs="1" maxOccurs="1">
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="time" type="xs:time"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="location">
+        <xs:all minOccurs="1" maxOccurs="1">
+            <xs:element name="latitude" type="tns:latitude"/>
+            <xs:element name="longitude" type="tns:longitude"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:simpleType name="latitude">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="longitude">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

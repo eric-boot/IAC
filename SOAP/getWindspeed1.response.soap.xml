@@ -1,0 +1,8 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:windspeedresponse xmlns:ns2="http://futureweather/windspeed/response" xmlns:ns3="http://futureweather/windspeed/request" xmlns:ns4="http://futureweather/windspeed/fault">
+            <windspeed>38</windspeed>
+            <unit>m/s</unit>
+        </ns2:windspeedresponse>
+    </S:Body>
+</S:Envelope>

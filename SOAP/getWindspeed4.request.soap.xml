@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://futureweather/windspeed/request">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <req:windspeedrequest>
+            <!--You may enter the following 2 items in any order-->
+            <dateTime>
+                <!--You may enter the following 2 items in any order-->
+                <date>2017-10-02</date>
+                <time>19:00</time>
+            </dateTime>
+            <location>
+                <!--You may enter the following 2 items in any order-->
+                <latitude>22</latitude>
+                <longitude>40</longitude>
+            </location>
+        </req:windspeedrequest>
+    </soapenv:Body>
+</soapenv:Envelope>
