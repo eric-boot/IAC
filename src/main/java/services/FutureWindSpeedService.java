@@ -33,7 +33,10 @@ public class FutureWindSpeedService {
             Date time =  df2.parse(timeString);
 
             double longitude = data.getInt("longitude");
+            if(longitude < -180.0 || longitude > 180.0) throw new Exception("longitude must be between -180 and 180");
+
             double latitude = data.getInt("latitude");
+            if(latitude < -90.0 || latitude > 90.0) throw new Exception("latitude must be between -90 and 90");
 
             Double windspeed = getDateTimeFactor(date, time) * getLocationFactor(longitude, latitude);
 
@@ -46,8 +49,8 @@ public class FutureWindSpeedService {
 
         } catch (Exception e) {
             System.out.println("Error Parsing: - " + e.toString() + "");
-            return Response.status(300).entity("Something went wrong while parsing your JSON Array. " +
-                    "Please check your JSON Array").build();
+            return Response.status(300).entity("Something went wrong while parsing your JSON Object. " +
+                    "Please check your JSON Object").build();
 
         }
         System.out.println("Data Received: " + JSONObj.toString());
@@ -75,7 +78,10 @@ public class FutureWindSpeedService {
             Date time =  df2.parse(timeString);
 
             double longitude = data.getInt("longitude");
+            if(longitude < -180.0 || longitude > 180.0) throw new Exception("longitude must be between -180 and 180");
+
             double latitude = data.getInt("latitude");
+            if(latitude < -90.0 || latitude > 90.0) throw new Exception("latitude must be between -90 and 90");
 
             Double windspeed = getDateTimeFactor(date, time) * getLocationFactor(longitude, latitude)/3.6;
 
@@ -88,8 +94,8 @@ public class FutureWindSpeedService {
 
         } catch (Exception e) {
             System.out.println("Error Parsing: - " + e.toString() + "");
-            return Response.status(300).entity("Something went wrong while parsing your JSON Array. " +
-                    "Please check your JSON Array").build();
+            return Response.status(300).entity("Something went wrong while parsing your JSON Object. " +
+                    "Please check your JSON Object").build();
 
         }
         System.out.println("Data Received: " + JSONObj.toString());
